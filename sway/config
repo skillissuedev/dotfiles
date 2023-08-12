@@ -20,7 +20,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty 
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -160,13 +160,18 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+bindsym $mod+p exec grim -g "$(slurp -d)" - | wl-copy
 
 exec waybar
 exec swaymsg default_border pixel
+gaps outer 5
+gaps inner 5
 
 workspace 1 output HDMI-A-1
 
 output HDMI-A-1 pos 0 0 res 2560x1080
 output DP-1 pos 2560 0 res 1920x1080 
 
-workspace 1
+exec workspace 5
+exec workspace 1
+exec /usr/bin/lxpolkit

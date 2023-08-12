@@ -15,6 +15,8 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'ellisonleao/gruvbox.nvim'
+  use 'itchyny/lightline.vim'
+  use 'nordtheme/vim'
   use 'preservim/nerdtree'
   use 'ap/vim-css-color'
 

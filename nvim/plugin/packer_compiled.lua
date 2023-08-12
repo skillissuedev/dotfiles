@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/unknownbruh/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
+  ["lightline.vim"] = {
+    loaded = true,
+    path = "/home/unknownbruh/.local/share/nvim/site/pack/packer/start/lightline.vim",
+    url = "https://github.com/itchyny/lightline.vim"
+  },
   nerdtree = {
     loaded = true,
     path = "/home/unknownbruh/.local/share/nvim/site/pack/packer/start/nerdtree",
@@ -108,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/unknownbruh/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  vim = {
+    loaded = true,
+    path = "/home/unknownbruh/.local/share/nvim/site/pack/packer/start/vim",
+    url = "https://github.com/nordtheme/vim"
   },
   ["vim-css-color"] = {
     loaded = true,
