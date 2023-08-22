@@ -167,6 +167,11 @@ exec swaymsg default_border pixel
 gaps outer 5
 gaps inner 5
 
+default_dim_inactive 0.2
+corner_radius 5
+shadows enable
+
+
 workspace 1 output HDMI-A-1
 
 output HDMI-A-1 pos 0 0 res 2560x1080
@@ -182,6 +187,6 @@ assign [app_id="firefox"] workspace number 3
 assign [app_id="obsidian"] workspace number 3
 
 exec firefox
-exec alacritty --class first_term
-exec alacritty --class second_term
+exec kitty --class first_term
+exec kitty --class second_term
 exec ~/Obsidian-1.3.7.AppImage --class obsidian
