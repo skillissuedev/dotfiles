@@ -9,3 +9,4 @@ vim.g.tabstop = 2
 vim.g.shiftwidth = 4
 vim.g.softtabstop = 2
 vim.g.mouse = true
+vim.opt.guifont = { "JetBrains Mono", ":h11" }

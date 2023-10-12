@@ -171,7 +171,6 @@ default_dim_inactive 0.2
 corner_radius 5
 shadows enable
 
-
 workspace 1 output HDMI-A-1
 
 output HDMI-A-1 pos 0 0 res 2560x1080
@@ -185,8 +184,10 @@ assign [app_id="first_term"] workspace number 1
 assign [app_id="second_term"] workspace number 2
 assign [app_id="firefox"] workspace number 3
 assign [app_id="obsidian"] workspace number 3
+#assign [app_id="Chromium-browser"] workspace number 3
 
-exec firefox
-exec kitty --class first_term
-exec kitty --class second_term
-exec ~/Obsidian-1.3.7.AppImage --class obsidian
+exec firefox --class browser
+#exec chromium-browser 
+exec kitty -d rust_projects/baldej/projectbaldej/src --class first_term
+exec kitty -d rust_projects/baldej/projectbaldej/ --class second_term
+exec ~/AppImages/Obsidian-1.3.7_659cbc6c7329eeacd9c7bf0f15691cd6.AppImage 
