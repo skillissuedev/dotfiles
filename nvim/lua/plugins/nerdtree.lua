@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<C-e>', ':NERDTreeToggle<CR>', {silent = true })
+vim.keymap.set('n', '<leader>e', ':NERDTreeToggle<CR>', {silent = true })

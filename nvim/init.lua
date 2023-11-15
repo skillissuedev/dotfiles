@@ -1,12 +1,12 @@
-require("plugins")
 require("keybindings")
+require("plugins")
 
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.g.autoindent = true
 vim.g.smarttab = true
-vim.g.tabstop = 2
 vim.g.shiftwidth = 4
-vim.g.softtabstop = 2
 vim.g.mouse = true
-vim.opt.guifont = { "JetBrains Mono", ":h11" }
+vim.o.guifont = "JetBrains Mono:h12"
+vim.g.neovide_transparency = 0.7
+vim.g.transparency = 0.7

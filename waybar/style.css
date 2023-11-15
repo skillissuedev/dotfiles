@@ -1,101 +1,83 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrains Mono Nerd Font";
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, JetBrains Mono;
     font-size: 13px;
-    min-height: 0;
+    margin: 1px;
+    border-radius: 15px;
+    color: #e0def4;
 }
 
 window#waybar {
-    background: transparent;
-    color: white;
+    margin: 5px;
+    padding: 0px;
+    border-radius: 0px;
+    background-color: rgba(25, 23, 36, 0.8);
+    color: #e0def4;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-#window {
-    font-weight: bold;
-    font-family: "JetBrains Mono";
-}
-/*
 #workspaces {
+    color: #e0def4;
     padding: 0 5px;
+    background-color: rgb(31, 29, 46);
 }
-*/
 
-#workspaces button {
-    padding: 0 5px;
-    background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+#workspaces button:hover {
+    color: #e0def4;
+    background: rgb(144, 140, 170);
+    box-shadow: 0px 0px 0px;
 }
 
 #workspaces button.focused {
-    color: white;
-    border-top: 2px solid white;
+    color: #e0def4;
+    background-color: #64727D;
 }
 
-#mode {
-    background: white;
-    border-bottom: 3px solid white;
+#workspaces button.urgent {
+    color: #e0def4;
+    background-color: rgb(235, 111, 146);
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
-    margin: 0 2px;
+#clock,
+#tray {
+    padding: 0 10px;
+    margin-right: 2px;
+}
+
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
 #clock {
-    font-weight: bold;
+    background-color: rgb(31, 29, 46);
 }
-
-#battery {
-}
-
-#battery icon {
-    color: red;
-}
-
-#battery.charging {
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
-}
-
-#battery.warning:not(.charging) {
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#cpu {
-}
-
-#memory {
-}
-
-#network {
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
 #tray {
+    background-color: rgb(31, 29, 46);
 }
 
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#language {
+    background: #26233a;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}

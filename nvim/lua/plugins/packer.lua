@@ -1,36 +1,26 @@
--- plugins
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'itchyny/lightline.vim'
-  use 'nordtheme/vim'
-  use 'preservim/nerdtree'
-  use 'ap/vim-css-color'
-
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {'neoclide/coc.nvim', branch = 'release'}
-  use 'rust-lang/rust.vim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup({
+  "wbthomason/packer.nvim",
+  "ellisonleao/gruvbox.nvim",
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  'itchyny/lightline.vim',
+  'preservim/nerdtree',
+  { "catppuccin/nvim", as = "catppuccin" },
+  'ap/vim-css-color',
+  { 'nvim-telescope/telescope.nvim', tag = '0.1.4' },
+  'nvim-lua/plenary.nvim',
+  {'neoclide/coc.nvim', branch = 'release'},
+  'rust-lang/rust.vim'
+})
 
