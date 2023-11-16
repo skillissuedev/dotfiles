@@ -15,12 +15,15 @@ require("lazy").setup({
   "ellisonleao/gruvbox.nvim",
   { 'rose-pine/neovim', name = 'rose-pine' },
   'itchyny/lightline.vim',
-  'preservim/nerdtree',
   { "catppuccin/nvim", as = "catppuccin" },
   'ap/vim-css-color',
   { 'nvim-telescope/telescope.nvim', tag = '0.1.4' },
   'nvim-lua/plenary.nvim',
   {'neoclide/coc.nvim', branch = 'release'},
-  'rust-lang/rust.vim'
+  'rust-lang/rust.vim',
+  "ryanoasis/vim-devicons",
+  "nvim-tree/nvim-tree.lua",
+  "nvim-tree/nvim-web-devicons"
 })
+
 
