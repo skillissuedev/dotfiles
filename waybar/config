@@ -5,6 +5,7 @@
     "modules-center": [/*"hyprland/language", */"hyprland/workspaces"],
     "modules-right": ["tray"],
     "modules-left": ["clock"],
+    "layer": "top",
     // Modules configuration
     "hyprland/workspaces": {
 	    "disable-scroll": true,

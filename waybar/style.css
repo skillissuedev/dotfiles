@@ -1,42 +1,47 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, JetBrains Mono;
-    font-size: 13px;
+    font-family: Iosevka Bold;
+    font-size: 14px;
     margin: 1px;
     border-radius: 15px;
     color: #e0def4;
+}
+ 
+button:hover {
+  box-shadow: none; /* Remove predefined box-shadow */
+  text-shadow: none; /* Remove predefined text-shadow */
+  background: none; /* Remove predefined background color (white) */
+  transition: none; /* Disable predefined animations */
 }
 
 window#waybar {
     margin: 5px;
     padding: 0px;
     border-radius: 0px;
-    background-color: rgba(25, 23, 36, 0.8);
+    background-color: rgba(36, 40, 59, 0.8);
     color: #e0def4;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 #workspaces {
-    color: #e0def4;
+    background-color: #414868;
     padding: 0 5px;
-    background-color: rgb(31, 29, 46);
 }
 
 #workspaces button:hover {
-    color: #e0def4;
-    background: rgb(144, 140, 170);
-    box-shadow: 0px 0px 0px;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background-color: #414868;
+    border-color: #c0caf5;
 }
 
 #workspaces button.focused {
-    color: #e0def4;
-    background-color: #64727D;
+    background-color: #414868;
 }
 
 #workspaces button.urgent {
-    color: #e0def4;
-    background-color: rgb(235, 111, 146);
+    background-color: #414868;
 }
 
 #clock,
@@ -60,10 +65,10 @@ window#waybar {
 }
 
 #clock {
-    background-color: rgb(31, 29, 46);
+    background-color: #414868;
 }
 #tray {
-    background-color: rgb(31, 29, 46);
+    background-color: #414868;
 }
 
 #tray > .passive {
