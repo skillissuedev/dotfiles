@@ -1,10 +1,9 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Iosevka Bold;
-    font-size: 14px;
-    margin: 1px;
-    border-radius: 15px;
-    color: #e0def4;
+    font-family: 'Iosevka NFM SemiBold';
+    font-size: 15px;
+    background-color: transparent;
+    color: #9DA9A0;
 }
  
 button:hover {
@@ -15,74 +14,39 @@ button:hover {
 }
 
 window#waybar {
+    margin-top: 5px;
     margin: 5px;
     padding: 0px;
     border-radius: 0px;
-    background-color: rgba(36, 40, 59, 0.8);
-    color: #e0def4;
-    transition-property: background-color;
-    transition-duration: .5s;
+}
+
+#window {
 }
 
 #workspaces {
-    background-color: #414868;
-    padding: 0 5px;
+    padding: 0px;
 }
 
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background-color: #414868;
-    border-color: #c0caf5;
+    border-color: #9DA9A0;
 }
 
 #workspaces button.focused {
-    background-color: #414868;
 }
 
 #workspaces button.urgent {
-    background-color: #414868;
 }
 
-#clock,
 #tray {
-    padding: 0 10px;
-    margin-right: 2px;
-}
-
-#workspaces {
-    margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    background-color: #414868;
-}
-#tray {
-    background-color: #414868;
+    margin-right: 12px;
+    -gtk-icon-effect: dim;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#language {
-    background: #26233a;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
 }
