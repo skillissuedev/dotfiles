@@ -1,104 +1,96 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+## Set history
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt correct                   # Auto correct mistakes
+setopt extendedglob              # Extended globbing. Allows using regular expressions with *
+setopt nocaseglob                # Case insensitive globbing
+setopt rcexpandparam             # Array expension with parameters
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path 
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+### Load function for auto completion
+autoload -U compinit
+compinit
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+## Set key bindings
+bindkey -e
+bindkey '^[[7~' beginning-of-line                               # Home key
+bindkey '^[[H' beginning-of-line                                # Home key
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
+fi
+bindkey '^[[8~' end-of-line                                     # End key
+bindkey '^[[F' end-of-line                                      # End key
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
+fi
+bindkey '^[[2~' overwrite-mode                                  # Insert key
+bindkey '^[[3~' delete-char                                     # Delete key
+bindkey '^[[C'  forward-char                                    # Right key
+bindkey '^[[D'  backward-char                                   # Left key
+bindkey "^[[A" history-substring-search-up                      # Up key
+bindkey "^[[B" history-substring-search-down                    # Down key
+bindkey ";5A" history-beginning-search-backward                 # Ctrl-Up key
+bindkey ";5B" history-beginning-search-forward                  # Ctrl-Down key
+bindkey "^[[1;5A" history-beginning-search-backward             # Ctrl-Up key
+bindkey "^[[1;5B" history-beginning-search-forward              # Ctrl-Down key
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+bindkey '^[Oc' forward-word                                     #
+bindkey '^[Od' backward-word                                    #
+bindkey '^[[1;5D' backward-word                                 #
+bindkey '^[[1;5C' forward-word                                  #
+bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
+bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+## Set alias 
+alias ls='ls --color=auto'                                      # Set colored output of ls
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+## Color man pages
+man() {
+  LESS_TERMCAP_mb="${LESS_TERMCAP_mb:-$'\E[01;31m'}"  # bold red
+  LESS_TERMCAP_md="${LESS_TERMCAP_md:-$'\E[01;31m'}"  # bold red
+  LESS_TERMCAP_me="${LESS_TERMCAP_me:-$'\E[0m'}"      # reset
+  LESS_TERMCAP_se="${LESS_TERMCAP_se:-$'\E[0m'}"      # reset
+  LESS_TERMCAP_so="${LESS_TERMCAP_so:-$'\E[01;44m'}"  # bold blue
+  LESS_TERMCAP_ue="${LESS_TERMCAP_ue:-$'\E[0m'}"      # reset
+  LESS_TERMCAP_us="${LESS_TERMCAP_us:-$'\E[01;32m'}"  # bold green
+  LESS="${LESS:-"-R"}"
+  command man "$@"
+}
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+source ~/.zsh-history-substring-search.zsh
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey "^[[1;3D" backward-word # Alt + Left
+bindkey "^[[1;3C" forward-word # Alt + Right
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+PROMPT="%F{green}%C 〉%f"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# zapret configuration aliases
+alias zapret-config='$HOME/zapret-configs/install.sh'
+alias zapret-utils='$HOME/zapret-configs/utils-zapret.sh'
