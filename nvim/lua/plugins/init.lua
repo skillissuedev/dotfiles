@@ -1,0 +1,8 @@
+require("plugins.lazy")
+require("plugins.theme")
+require("plugins.nvimtree")
+require("plugins.telescope")
+require("plugins.lsp")
+require("plugins.treesitter")
+require("plugins.harpoon")
+require("plugins.lualine")

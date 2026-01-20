@@ -1,6 +1,28 @@
+//"width": 2560,
+//"width": 1280,
+
+[{
+    "output": ["DP-2"],
+    "height": 10, // Waybar height (to be removed for auto height),
+    "width": 1100,
+    //"width": 1024,
+    //"width": 800,
+    "margin-top": 0,
+    "spacing": 0, // Gaps between modules (4px)
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray"],
+    "modules-left": ["hyprland/workspaces"],
+    "layer": "top",
+    // Modules configuration
+    "tray": {
+        "icon-size": 16,
+        "spacing": 13
+    },
+},
 {
+    "output": ["HDMI-A-1"],
     "height": 10, // Waybar height (to be removed for auto height)
-    "width": 2560,
+    "width": 1440,
     "margin-top": 0,
     "spacing": 0, // Gaps between modules (4px)
     "modules-center": ["hyprland/window"],
@@ -13,4 +35,4 @@
         "spacing": 13
     },
 }
-
+]
